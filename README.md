@@ -1,6 +1,6 @@
 # HomeLedger
 
-Self-hosted personal finance tracker built with Go.
+Privacy-first self-hosted finance tracker.
 
 ## Features
 
