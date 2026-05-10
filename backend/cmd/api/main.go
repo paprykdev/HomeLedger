@@ -41,10 +41,12 @@ func main() {
 	transactionHandler := handlers.NewTransactionHandler(db)
 
 	// Register routes
-	routes.RegisterHealthRoutes(r)
-	routes.RegisterUserRoutes(r, userHandler)
-	routes.RegisterAccountRoutes(r, accountHandler)
-	routes.RegisterTransactionRoutes(r, transactionHandler)
+	r.Route("/api", func(r chi.Router) {
+		routes.RegisterHealthRoutes(r)
+		routes.RegisterUserRoutes(r, userHandler)
+		routes.RegisterAccountRoutes(r, accountHandler)
+		routes.RegisterTransactionRoutes(r, transactionHandler)
+	})
 
 	log.Printf("server running on :%s", cfg.Port)
 
