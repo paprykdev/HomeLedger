@@ -26,9 +26,9 @@ func main() {
 	db := database.New()
 	defer db.Close()
 
-	if err := database.RunMigrations(db); err != nil {
-		log.Fatal(err)
-	}
+	// if err := database.RunMigrations(db); err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	r := chi.NewRouter()
 

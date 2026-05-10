@@ -32,3 +32,27 @@ Run migrations manually:
 cd backend
 go run ./cmd/migrate
 ```
+
+## Docker Compose
+
+Run frontend + backend together:
+
+```bash
+docker compose up --build
+```
+
+Services:
+- Frontend: `http://localhost:3000`
+- Backend API: `http://localhost:8080`
+
+## Docker Compose (development)
+
+Run both services in development mode with bind mounts:
+
+```bash
+docker compose -f docker-compose.dev.yml up
+```
+
+This runs:
+- Backend via `go run` (with migrations on startup)
+- Frontend via `pnpm dev` on `0.0.0.0:3000`

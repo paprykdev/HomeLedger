@@ -13,7 +13,7 @@ type Config struct {
 func Load() *Config {
 	return &Config{
 		JWTSecret: getEnv("JWT_SECRET", "your-secret-key-change-in-production"),
-		Port:      getEnv("PORT", "8080"),
+		Port:      getEnv("PORT", "3000"),
 		DbPath:    getEnv("DB_PATH", "./homeledger.db"),
 	}
 }
