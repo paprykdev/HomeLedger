@@ -20,4 +20,15 @@ Privacy-first self-hosted finance tracker.
 ## Getting Started
 
 ```bash
+cd backend
 go run ./cmd/api
+```
+
+Migrations are applied automatically on API startup.
+
+Run migrations manually:
+
+```bash
+cd backend
+go run ./cmd/migrate
+```
