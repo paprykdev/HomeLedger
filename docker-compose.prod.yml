@@ -1,0 +1,13 @@
+services:
+    homeledger:
+        image: paprykdev/homeledger:latest
+        environment:
+            JWT_SECRET: 'change-me-in-production'
+            HOMELEDGER_DB_PATH: '/app/storage/homeledger.db'
+        volumes:
+            - homeledger-storage:/app/storage
+        ports:
+            - '80:80'
+
+volumes:
+    homeledger-storage:
