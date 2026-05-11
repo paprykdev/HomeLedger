@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background-primary: #050816;
+  --color-background-secondary: #0b1120;
+  --color-background-tertiary: #111827;
+
+  --color-surface-primary: #0f172a;
+  --color-surface-secondary: #111827;
+  --color-surface-elevated: #1e293b;
+
+  --color-border-primary: #1f2937;
+  --color-border-secondary: #334155;
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+
+  --color-brand-primary: #22c55e;
+  --color-brand-secondary: #16a34a;
+  --color-brand-glow: #4ade80;
+
+  --color-income-primary: #22c55e;
+  --color-income-secondary: #4ade80;
+  --color-income-bg: #052e16;
+
+  --color-expense-primary: #ef4444;
+  --color-expense-secondary: #f97316;
+  --color-expense-bg: #3b0a0a;
+
+  --color-warning-primary: #f59e0b;
+  --color-warning-bg: #451a03;
+
+  --color-info-primary: #3b82f6;
+  --color-info-secondary: #60a5fa;
+  --color-info-bg: #172554;
+
+  --color-chart-green: #22c55e;
+  --color-chart-blue: #3b82f6;
+  --color-chart-purple: #8b5cf6;
+  --color-chart-pink: #ec4899;
+  --color-chart-orange: #f59e0b;
+  --color-chart-red: #ef4444;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  border-color: var(--color-border-primary);
+}
+
+.glass-card {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--color-surface-elevated) 90%, white 10%),
+    var(--color-surface-primary)
+  );
+  box-shadow: 0 8px 30px rgb(0 0 0 / 30%);
+}
+
+.chart-glow {
+  filter: drop-shadow(0 0 8px rgb(34 197 94 / 25%));
 }

@@ -4,55 +4,70 @@ Privacy-first self-hosted finance tracker.
 
 ## Features
 
-- self-hosted
+- Self-hosted
 - SQLite
 - REST API
-- Docker support
-- transaction tracking
+- Frontend + backend Docker setup
+- Transaction tracking
 
 ## Tech Stack
 
-- Go
-- Chi
-- SQLite
-- Docker (planned)
+- Backend: Go + Chi + SQLite
+- Frontend: Next.js + React + pnpm
+- Docker / Docker Compose
 
-## Getting Started
+## Local development (without Docker)
 
-```bash
-cd backend
-go run ./cmd/api
-```
-
-Migrations are applied automatically on API startup.
-
-Run migrations manually:
+### Backend
 
 ```bash
 cd backend
 go run ./cmd/migrate
+PORT=8080 go run ./cmd/api
 ```
 
-## Docker Compose
+Backend API: `http://localhost:8080/api`
 
-Run frontend + backend together:
+### Frontend
 
 ```bash
-docker compose up --build
+cd frontend
+pnpm install
+pnpm dev
+```
+
+Frontend runs on `http://localhost:3000` by default.
+
+## Docker Compose (development)
+
+Use the root compose file for development (bind mounts + dev commands):
+
+```bash
+docker compose up
 ```
 
 Services:
 - Frontend: `http://localhost:3000`
-- Backend API: `http://localhost:8080`
+- Backend API: `http://localhost:8080/api`
 
-## Docker Compose (development)
-
-Run both services in development mode with bind mounts:
+## Docker Compose (production image)
 
 ```bash
-docker compose -f docker-compose.dev.yml up
+docker compose -f docker-compose.prod.yml up -d
 ```
 
-This runs:
-- Backend via `go run` (with migrations on startup)
-- Frontend via `pnpm dev` on `0.0.0.0:3000`
+This uses the published image `paprykdev/homeledger:latest`.
+
+## Environment variables
+
+Backend:
+- `PORT` (default: `3000`)
+- `JWT_SECRET` (required for real deployments)
+- `HOMELEDGER_DB_PATH` (default path is handled in code)
+
+Frontend:
+- `NEXT_PUBLIC_API_BASE_URL` (used in container setup)
+
+## API reference
+
+See `backend/API_ENDPOINTS.md` for frontend-oriented endpoint documentation.
